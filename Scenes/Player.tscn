@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scribble/character_roundRed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scribble/item_hat.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Scribble/character_handRed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GFX/Background/bg_layer1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GFX/Background/bg_layer2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GFX/Background/bg_layer3.png" type="Texture" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 19.0789
+height = 24.4499
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 500, 0 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_left = -250
+limit_right = 6750
+limit_bottom = 1500
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.25, 1 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+motion_offset = Vector2( 0, -1000 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.75, 1 )
+motion_offset = Vector2( 0, -800 )
+motion_mirroring = Vector2( 2048, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer3"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.513336, -0.0542412 )
+shape = SubResource( 1 )
+
+[node name="PlayerCharacter" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite" parent="PlayerCharacter"]
+texture = ExtResource( 3 )
+
+[node name="Hat" type="Sprite" parent="PlayerCharacter/Body"]
+position = Vector2( 0.513367, -25.1538 )
+texture = ExtResource( 4 )
+
+[node name="LeftHand" type="Sprite" parent="PlayerCharacter/Body"]
+position = Vector2( -20.0204, 1.54002 )
+texture = ExtResource( 5 )
+
+[node name="RightHand" type="Sprite" parent="PlayerCharacter/Body"]
+position = Vector2( 26.1805, 2.05338 )
+texture = ExtResource( 5 )
