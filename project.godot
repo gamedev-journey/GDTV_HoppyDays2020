@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="HoppyDays"
-run/main_scene="res://Scenes/Levels/Level1.tscn"
+run/main_scene="res://Scenes/Levels/Welcome.tscn"
 config/icon="res://Assets/Scribble/item_hatTop.png"
 
 [input]
